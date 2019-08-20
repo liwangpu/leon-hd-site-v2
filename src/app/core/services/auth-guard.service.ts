@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AppCacheService } from './app-cache.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(protected cacheSrv: AppCacheService, protected router: Router) {
+  constructor(protected router: Router, protected authSrv: AuthService) {
 
   }//constructor
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
-    let hasToken = this.cacheSrv.token ? true : false;
-    let tokenNotExpired = new Date(this.cacheSrv.tokenExpires) > new Date();
-    if (hasToken && tokenNotExpired)
-      return true;
+
+    if (this.authSrv.tokenValid) return true;
 
     let params = {
       queryParams: {

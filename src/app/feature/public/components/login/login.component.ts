@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AppConfigService, AppCacheService } from '@app/core';
+import { AppConfigService, AppCacheService, AuthService } from '@app/core';
 import { TokenService } from '@app/feature/basic-ms';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   rememberLogin: boolean = true;
   returnUrl: string;
   loginForm: FormGroup;
-  constructor(protected acr: ActivatedRoute, protected router: Router, protected formBuilder: FormBuilder, protected cacheSrv: AppCacheService, protected httpClient: HttpClient, protected appConfiSrv: AppConfigService, protected tokenSrv: TokenService) {
+  showLoading = true;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, protected acr: ActivatedRoute, protected router: Router, protected formBuilder: FormBuilder, protected cacheSrv: AppCacheService, protected httpClient: HttpClient, protected appConfiSrv: AppConfigService, protected tokenSrv: TokenService, protected authSrv: AuthService) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -25,6 +27,16 @@ export class LoginComponent implements OnInit {
   }//constructor
 
   ngOnInit() {
+
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    if (this.authSrv.tokenValid) {
+      this.router.navigateByUrl(this.returnUrl);
+      return;
+    }
+
+    this.showLoading = false;
+
     let lastLoginStr = this.cacheSrv.lastLoginAccount;
     if (lastLoginStr)
       this.loginForm.patchValue(JSON.parse(lastLoginStr));

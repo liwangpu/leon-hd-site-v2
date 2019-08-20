@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" *ngIf='!showLoading'>
   <img class="logo" src="assets/images/logo/dmz-cloud.png">
   <form name="loginForm" [formGroup]="loginForm" autocomplete="off">
     <div class="form-container">
@@ -11,10 +11,10 @@
         <input type="checkbox" id="remember-me-ct" [checked]='rememberLogin' (change)="rememberLogin = !rememberLogin">
         <label for="remember-me-ct">{{'button.rememberMe'|translate}}</label>
       </div>
-      <!-- <span class="login-tip" *ngIf='loginError'>{{loginMsg|translate}}</span> -->
       <div class="pwd-op-container">
         <a href="#">{{'button.forgotPassword'|translate}}</a>
       </div>
     </div>
   </form>
 </div>
+<public-loading *ngIf='showLoading'></public-loading>

@@ -10,6 +10,7 @@ import { LocalizationInterceptorService } from './services/localization-intercep
 import { MessageCenterService } from './services/message-center.service';
 import { RouterRecorderService } from './services/router-recorder.service';
 import { AppConfigService } from './services/app-config.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { AppConfigService } from './services/app-config.service';
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } },
+    AuthService,
     AuthGuardService,
     LocalStoreService,
     AppCacheService,

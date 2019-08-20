@@ -9,6 +9,7 @@ export * from './services/app-cache.service';
 export * from './services/app-config.service';
 export * from './services/message-center.service';
 export * from './services/router-recorder.service';
+export * from './services/auth.service';
 //models
 export * from './models/app-config';
 export * from './models/file-helper';

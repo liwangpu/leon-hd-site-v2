@@ -5,7 +5,9 @@ export class Solution {
     name: string;
     description: string;
     icon: string;
-
+    createdTime:number;
+    modifiedTime:number;
+    
     static GenPatchDoc(entity: Solution): PatchOperation[] {
         return [
             {

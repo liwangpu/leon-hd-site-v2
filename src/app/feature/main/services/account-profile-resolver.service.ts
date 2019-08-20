@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AccountProfile, AccountService } from '@app/feature/basic-ms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class AccountProfileResolverService implements Resolve<AccountProfile> {
