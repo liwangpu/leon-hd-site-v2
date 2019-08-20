@@ -1,0 +1,16 @@
+<div class="cus-dialog">
+  <div class="header">
+    <p class="title">{{"dialog.selectCategory"|translate}}</p>
+    <button mat-icon-button (click)='dialogRef.close()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <morejee-category-single-select-panel [category]='_categoryTree' (categorySelected)='onCategorySelect($event)'></morejee-category-single-select-panel>
+  </div>
+  <div class="footer">
+      <p class="message" *ngIf='_selectedCategoryName'>{{"tip.selected"|translate}}：{{_selectedCategoryName}}</p>
+    <p class="btn" (click)='dialogRef.close()'>{{"button.cancel"|translate}}</p>
+    <p class="btn confirm" (click)='onConfirm()'>{{"button.confirm"|translate}}</p>
+  </div>
+</div>

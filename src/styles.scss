@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: Roboto, "微软雅黑","宋体", "仿宋", "楷体", "华文宋体", "华文黑体", "华文仿宋", "楷体", "Helvetica Neue", sans-serif;
+}
+
+//数值输入不显示上下滚动条
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@import "./styles.material.scss";
+@import "./styles.shared.scss";
+@import "./styles.customized.scss";

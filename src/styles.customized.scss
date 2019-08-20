@@ -1,0 +1,374 @@
+@import "./styles.app.theme.scss";
+//暖色面板
+.cus-warm-car {
+  border-radius: 0.3rem;
+  background-color: #f3f2f2;
+}
+//通用的表单编辑器
+form.cus-form {
+  width: 100%;
+  padding: 1rem 0;
+
+  div.cus-form-item {
+    width: 50%;
+    display: inline-block;
+
+    &.description {
+      width: 100%;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    &:nth-of-type(odd) {
+      padding-right: 15px;
+    }
+
+    &:nth-of-type(even) {
+      padding-left: 15px;
+    }
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  div.cus-form-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    button.mat-button {
+      padding: 0 8px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    div.cus-form-item {
+      width: 100%;
+
+      &:nth-of-type(odd) {
+        padding-right: 0;
+      }
+
+      &:nth-of-type(even) {
+        padding-left: 0;
+      }
+    }
+  }
+}
+//通用的mat group
+mat-tab-group.cus-tap-group {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  div.mat-tab-body-wrapper {
+    flex: 1 1 0;
+  }
+}
+
+//通用分页页面的列表
+div.list-viewer-table {
+  .mat-table {
+    background: none;
+    min-width: 1024px;
+    &.no-minimum {
+      min-width: 0;
+    }
+    .mat-header-row {
+      position: sticky;
+      top: 0;
+      min-height: 2rem;
+      border-top: 1px solid #d0d0d0;
+      z-index: 1;
+      font-weight: 400;
+      font-size: 12px;
+      color: rgb(62, 62, 60);
+      background-color: #fafaf9;
+    }
+
+    .mat-row {
+      min-height: 2rem;
+      font-size: 12px;
+      background-color: white;
+
+      &:hover {
+        background-color: #f3f2f2;
+      }
+
+      .mat-cell {
+        &.mat-column-_seqno {
+          text-align: center;
+        }
+
+        p.data-name {
+          word-break: break-all;
+          color: rgb(0, 109, 204);
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+
+        div.data-icon {
+          $size: 60px;
+          width: $size;
+          height: $size;
+          &.icon {
+            &:hover {
+              cursor: zoom-in;
+            }
+          }
+
+          img {
+            width: $size;
+            height: $size;
+          }
+        }
+
+        p.data {
+          word-break: break-all;
+          padding: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+//通用分页页面的分页器
+div.list-viewer-paginator {
+  .mat-paginator {
+    background-color: #f3f2f2;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    .mat-paginator {
+      .mat-paginator-page-size {
+        display: none;
+      }
+    }
+
+    span.msg {
+      display: none;
+    }
+  }
+}
+
+//通用的详情页面
+div.detail-viewer {
+  div.header {
+    @include CommonCardHeaderStyles;
+  }
+  div.basic-info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    div.kv {
+      padding-right: 2rem;
+      color: rgb(62, 62, 60);
+      font-size: 0.9rem;
+
+      p.k {
+        height: 1.5rem;
+        padding-bottom: 0.3rem;
+      }
+
+      p.v {
+        height: 1.5rem;
+      }
+    }
+  }
+  div.detail-info {
+    div.mend {
+      div.content {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+//通用的对话框
+div.cus-dialog {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+
+  div.header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: move;
+    p.title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding-left: 1rem;
+    }
+  }
+
+  div.content {
+    flex: 1 1 0;
+    overflow: auto;
+    position: relative;
+  }
+
+  div.footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #f0f0f0;
+    padding-right: 0.5rem;
+
+    p.message {
+      flex: 1 1 0;
+      font-size: 0.8rem;
+      padding-left: 1rem;
+      color: rgba(26, 115, 232, 1);
+    }
+
+    .mat-button {
+      padding: 0 8px;
+    }
+
+    p.btn {
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      border: 1px solid #d0d0d0;
+      color: rgba(27, 82, 151, 1);
+      font-size: 0.9rem;
+      margin-left: 10px;
+
+      &.confirm {
+        background-color: rgba(27, 82, 151, 1);
+        color: #fff;
+
+        &:hover {
+          background-color: rgba(0, 68, 135, 1);
+        }
+      }
+
+      &.disabled {
+        // background-color:
+        &:hover {
+          background-color: rgba(27, 82, 151, 1);
+          cursor: default;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: #f4f6f9;
+      }
+    }
+
+    button.form-button {
+      display: inline;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      border: 1px solid #d0d0d0;
+      color: rgba(27, 82, 151, 1);
+      font-size: 0.9rem;
+      margin-left: 10px;
+      outline: none;
+      background-color: transparent;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #f4f6f9;
+      }
+
+      &.confirm {
+        background-color: rgba(27, 82, 151, 1);
+        color: #fff;
+
+        &:hover {
+          background-color: rgba(0, 68, 135, 1);
+        }
+        &.disabled {
+          background-color: rgba(27, 82, 151, 1);
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+//通用的树
+.cus-tree-node {
+  button.mat-icon-button {
+    $size: 25px;
+
+    width: $size;
+    height: $size;
+    line-height: $size;
+
+    &[ng-reflect-disabled] {
+    }
+  }
+}
+
+//多重分类选择器
+div.category-multiple-select-panel {
+  // width: 100%;
+  // height: 100%;
+  & > .mat-tree {
+    background-color: transparent;
+    .mat-tree-node {
+      padding-right: 25px;
+      min-height: 0;
+      height: 25px;
+      // padding-left: 15px !important;
+      & .mat-tree-node {
+        // padding-left: 15px !important;
+      }
+    }
+  }
+}
+
+//简单的分页列表
+div.simple-paginator-table {
+  div.paginator-bar {
+    border-top: 1px solid #d0d0d0;
+    div.mat-paginator-container {
+      background-color: #fafaf9;
+      min-height: 2rem;
+      div.mat-paginator-page-size {
+        height: 32px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        overflow: hidden;
+      }
+      div.mat-paginator-range-actions {
+        div.mat-paginator-range-label {
+          margin: 0 18px;
+        }
+        button.mat-icon-button {
+          $size: 25px;
+          width: $size;
+          height: $size;
+          font-size: $size;
+          line-height: $size;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}

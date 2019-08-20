@@ -1,0 +1,23 @@
+<shared-detail-viewer [icon]='icon?(icon|serverRedirect:128):"/assets/images/common/noicon.svg"'
+  [title]='material?.name?material.name:("navigation.material"|translate)'>
+
+  <p class="header-tool-button" (click)='onChangeIcon()'>{{"button.changeIcon"|translate}}</p>
+  <div class="basic-info">
+    <div class="kv">
+      <p class="k">{{'form.createdTime'|translate}}</p>
+      <p class="v">{{material?.createdTime|date}}</p>
+    </div>
+    <div class="kv">
+      <p class="k">{{'form.modifiedTime'|translate}}</p>
+      <p class="v">{{material?.modifiedTime|date}}</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <mat-tab-group>
+      <mat-tab label="{{'tab.basicInfo'|translate}}">
+        <morejee-material-detail-basic [(material)]='material'></morejee-material-detail-basic>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</shared-detail-viewer>

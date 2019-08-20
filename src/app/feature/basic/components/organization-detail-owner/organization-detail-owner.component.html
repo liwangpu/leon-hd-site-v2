@@ -1,0 +1,6 @@
+<basic-account-detail-basic *ngIf='account' [account]='account'>
+    <button mat-button class="form-bar" (click)='resetPassword()'>
+        <mat-icon>lock_open</mat-icon>
+        <span>{{'button.resetPasssword'|translate}}</span>
+    </button>
+</basic-account-detail-basic>

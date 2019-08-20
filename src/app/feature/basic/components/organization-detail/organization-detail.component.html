@@ -1,0 +1,27 @@
+<shared-detail-viewer [title]='organization?.name?organization.name:"组织"'>
+
+    <div class="basic-info">
+        <div class="kv">
+            <p class="k">{{'form.createdTime'|translate}}</p>
+            <p class="v">{{organization?.createdTime|date}}</p>
+        </div>
+        <div class="kv">
+            <p class="k">{{'form.modifiedTime'|translate}}</p>
+            <p class="v">{{organization?.modifiedTime|date}}</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <mat-tab-group class="maximum">
+            <mat-tab label="{{'tab.basicInfo'|translate}}">
+                <basic-organization-detail-basic [(organization)]='organization'></basic-organization-detail-basic>
+            </mat-tab>
+            <mat-tab label="{{'tab.legalPerson'|translate}}" *ngIf='organization&&organization.ownerId'>
+                <basic-organization-detail-owner [accountId]='organization.ownerId'></basic-organization-detail-owner>
+            </mat-tab>
+            <mat-tab label="{{'tab.productPermission'|translate}}" *ngIf='organization&&organization.id'>
+               <morejee-aux-organization-permissin-product [organizationId]='organization.id'></morejee-aux-organization-permissin-product>
+            </mat-tab> 
+        </mat-tab-group>
+    </div>
+</shared-detail-viewer>

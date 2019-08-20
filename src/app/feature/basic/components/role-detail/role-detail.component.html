@@ -1,0 +1,17 @@
+<shared-detail-viewer [title]='role?.name?role.name:("navigation.role"|translate)'>
+
+    <div class="basic-info">
+        <div class="kv">
+            <p class="k">{{'form.description'|translate}}</p>
+            <p class="v">{{role?.description}}</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <mat-tab-group>
+            <mat-tab label="{{'tab.accessPoint'|translate}}">
+                <basic-role-detail-accesspoint [role]='role'></basic-role-detail-accesspoint>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</shared-detail-viewer>

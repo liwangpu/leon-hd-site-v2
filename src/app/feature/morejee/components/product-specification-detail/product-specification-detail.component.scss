@@ -1,0 +1,42 @@
+div.basic-info {
+  form.spec-form {
+    width: 100%;
+    padding: 1rem;
+
+    div.form-item {
+      width: 100%;
+      & > * {
+        width: 100%;
+      }
+    }
+    div.icon-and-info {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      div.icon {
+        $size: 260px;
+        width: $size;
+        height: $size;
+        border: 1px solid #d0d0d0;
+        & > img {
+          width: $size;
+          height: $size;
+        }
+      }
+      div.info {
+        flex: 1 1 0;
+        display: flex;
+        flex-flow: column;
+        padding: 0.5rem;
+        div.io {
+          flex: 1 1 0;
+          min-width: 250px;
+          & > * {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<shared-detail-viewer [icon]='icon?(icon|serverRedirect:128):"/assets/images/common/noicon.svg"'
+  [title]='product?.name?product.name:("navigation.product"|translate)'>
+
+  <div class="basic-info">
+    <div class="kv" *ngIf='showPrice'>
+      <p class="k">{{'form.price'|translate}}</p>
+      <p class="v">{{product.price}}</p>
+    </div>
+    <div class="kv" *ngIf='showPartnerPrice'>
+      <p class="k">{{'form.partnerPrice'|translate}}</p>
+      <p class="v">{{product.partnerPrice}}</p>
+    </div>
+    <div class="kv" *ngIf='showPurchasePrice'>
+      <p class="k">{{'form.purchasePrice'|translate}}</p>
+      <p class="v">{{product.purchasePrice}}</p>
+    </div>
+    <div class="kv">
+      <p class="k">{{'form.createdTime'|translate}}</p>
+      <p class="v">{{product?.createdTime|date}}</p>
+    </div>
+    <div class="kv">
+      <p class="k">{{'form.modifiedTime'|translate}}</p>
+      <p class="v">{{product?.modifiedTime|date}}</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <mat-tab-group class="maximum">
+      <mat-tab label="{{'tab.basicInfo'|translate}}">
+        <morejee-product-detail-basic [product]='product' (productChange)='onProductChange($event)'>
+        </morejee-product-detail-basic>
+      </mat-tab>
+      <mat-tab label="{{'tab.specification'|translate}}" *ngIf='product&&product.id'>
+        <morejee-product-detail-specification [(product)]='product'>
+        </morejee-product-detail-specification>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</shared-detail-viewer>

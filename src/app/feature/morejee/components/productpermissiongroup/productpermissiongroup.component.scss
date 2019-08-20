@@ -1,0 +1,90 @@
+div.container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  div.header {
+    height: 60px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8rem;
+    p.indicator {
+      color: rgb(62, 62, 60);
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    p.title {
+      color: #0070d2;
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  div.content {
+    flex: 1 1 0;
+    overflow: auto;
+    div.area-container {
+      display: flex;
+      flex-flow: row;
+      height: 100%;
+      min-width: 1200px;
+      div.area {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        border-right: 1px solid #d0d0d0;
+        &.product-group {
+          width: 400px;
+        }
+        &.organ {
+          width: 400px;
+        }
+        &.product {
+          flex: 1 1 0;
+        }
+        div.area-content {
+          flex: 1 1 0;
+          overflow-y: auto;
+        }
+        div.area-tool {
+          display: flex;
+          flex-flow: row;
+          height: 35px;
+          align-items: center;
+          border-top: 1px solid #d0d0d0;
+          p.title {
+            color: rgb(62, 62, 60);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding-left: 0.5rem;
+          }
+          div.search {
+            flex: 1 1 0;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-end;
+            & > * {
+              width: 150px;
+            }
+          }
+          mat-icon.toolbar {
+            &.warn {
+              color: red;
+            }
+            &.disabled {
+              color: #d0d0d0;
+              &:hover {
+                cursor: default;
+              }
+            }
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

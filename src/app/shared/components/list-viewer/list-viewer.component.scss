@@ -1,0 +1,23 @@
+@import "../../../../styles.app.theme.scss";
+
+div.viewer-container {
+  @include CommonCardStyles;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  padding-bottom: $GLCommonCardRadius;
+  div.content {
+    flex: 1 1 0;
+    display: flex;
+    flex-flow: row;
+    div.list-center-part {
+      flex: 1 1 0;
+      display: flex;
+      flex-flow: column;
+      div.list {
+        flex: 1 1 0;
+      }
+    }
+  }
+}

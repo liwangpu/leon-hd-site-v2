@@ -1,0 +1,45 @@
+<div class="container">
+    <form name="detailForm" [formGroup]="detailForm" class="cus-form">
+        <input type="hidden" formControlName='id' name='id'>
+        <div class="cus-form-item">
+            <mat-form-field>
+                <input matInput name="firstName" formControlName="firstName"
+                    placeholder='{{"form.firstName"|translate}}' required />
+                <mat-error *ngIf="f.firstName.errors?.required">{{'validation.required'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="cus-form-item">
+            <mat-form-field>
+                <input matInput name="lastName" formControlName="lastName" placeholder='{{"form.lastName"|translate}}'
+                    required />
+                <mat-error *ngIf="f.lastName.errors?.required">{{'validation.required'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="cus-form-item">
+            <mat-form-field>
+                <input matInput name="mail" formControlName="mail" placeholder='{{"form.mail"|translate}}' required />
+                <mat-error *ngIf="f.mail.errors?.required">{{'validation.required'|translate}}</mat-error>
+                <mat-error *ngIf="f.mail.errors?.email">{{'validation.email'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="cus-form-item">
+            <mat-form-field>
+                <input matInput name="phone" formControlName="phone" placeholder='{{"form.phone"|translate}}'
+                    required />
+                <mat-error *ngIf="f.phone.errors?.required">{{'validation.required'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="cus-form-item">
+            <mat-form-field>
+                <input matInput name="description" formControlName="description"
+                    placeholder='{{"form.description"|translate}}' />
+            </mat-form-field>
+        </div>
+        <div class="cus-form-bar">
+            <button mat-button [disabled]='!(detailForm.valid&&detailForm.dirty)' (click)='onSave()'>
+                <mat-icon>save</mat-icon>
+                <span>{{'button.save'|translate}}</span>
+            </button>
+        </div>
+    </form>
+</div>

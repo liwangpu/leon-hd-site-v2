@@ -1,0 +1,21 @@
+<div class="container cus-dialog">
+  <div class="header">
+      <p class="title">{{"dialog.selectProduct"|translate}}</p>
+      <div class="search-bar">
+          <shared-widget-auto-search-bar (searchChange)='search=$event;onTableQuery(pageParam)'>
+          </shared-widget-auto-search-bar>
+      </div>
+      <button class="close-dialog-btn" mat-icon-button (click)='dialogRef.close()'>
+          <mat-icon>close</mat-icon>
+      </button>
+  </div>
+  <div class="content">
+      <shared-simple-paginator-viewer-table [columnDefs]='columnDefs' [result]='productQueryResult'
+          (query)='onTableQuery($event)' (selectItems)='onProductSelect($event)'>
+      </shared-simple-paginator-viewer-table>
+  </div>
+  <div class="footer">
+      <button class="form-button confirm" [class.disabled]='!selectedIds' [disabled]='!selectedIds'
+          (click)='onConfirm()'>{{"button.confirm"|translate}}</button>
+  </div>
+</div>

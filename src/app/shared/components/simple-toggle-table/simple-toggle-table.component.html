@@ -1,0 +1,57 @@
+<div class="list-viewer-table">
+    <mat-table class="no-minimum" *ngIf='columnsToDisplay&&columnsToDisplay.length>0' [dataSource]="_dataSource">
+
+        <!-- 序列号列 -->
+        <ng-container cdkColumnDef='_seqno'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='"65px"'></mat-header-cell>
+            <mat-cell *cdkCellDef="let element;let i=index" [fxFlex]='"65px"'>
+                {{element["_seqno"]}}
+            </mat-cell>
+        </ng-container>
+        <!-- 选择框列 -->
+        <ng-container cdkColumnDef='_toggle'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='"40px"'>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element" [fxFlex]='"40px"'>
+                <mat-slide-toggle color='primary' (click)="$event.stopPropagation()"
+                    (change)="$event ? _selection.toggle(element) : null" [disabled]='disabled' [checked]="_selection.isSelected(element)">
+                    Slide me!</mat-slide-toggle>
+            </mat-cell>
+        </ng-container>
+        <!-- 图标列 -->
+        <ng-container *ngIf='_hasIconColumnDef' cdkColumnDef='icon'>
+            <mat-header-cell *cdkHeaderCellDef fxFlex='70px'>
+                {{'form.icon'|translate}}</mat-header-cell>
+            <mat-cell *cdkCellDef="let element;" fxFlex='70px'>
+                <div class="data-icon" [class.icon]='element["icon"]'
+                    (click)='viewLargeIcon(element["icon"]?element["icon"]:"")'>
+                    <img
+                        [src]='element["icon"]?(element["icon"]|serverRedirect:128):"/assets/images/common/noicon.svg"'>
+                </div>
+            </mat-cell>
+        </ng-container>
+        <!-- 名称列 -->
+        <ng-container cdkColumnDef='name'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='_nameColumnDef.width?_nameColumnDef.width+"px":"150px"'>
+                {{'form.name'|translate}}
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element;" [fxFlex]='_nameColumnDef.width?_nameColumnDef.width+"px":"150px"'>
+                <p class="data-name" (click)='_viewRecord(element)'>{{element.name}}</p>
+            </mat-cell>
+        </ng-container>
+        <!-- 自定义列 -->
+        <ng-container [cdkColumnDef]='column.field'
+            *ngFor='let column of columnDefs | sharedTablePredefineColumnFilter:"_seqno,_toggle,name,icon"'>
+            <mat-header-cell *cdkHeaderCellDef [fxFlex]='column.width?column.width+"px":"auto"'>
+                {{column.name|translate}}
+            </mat-header-cell>
+
+            <mat-cell *cdkCellDef="let element" [fxFlex]='column.width?column.width+"px":"auto"'>
+                <p class="data">{{element[column.field]}}</p>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    </mat-table>
+</div>

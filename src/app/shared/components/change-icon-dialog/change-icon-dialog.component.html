@@ -1,0 +1,26 @@
+<div class="cus-dialog">
+  <div class="header">
+    <p class="title">{{"dialog.changeIcon"|translate}}</p>
+    <button mat-icon-button (click)='dialogRef.close()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="mend">
+      <div class="img">
+        <div class="pd t l"></div>
+        <div class="pd t r"></div>
+        <div class="pd b l"></div>
+        <div class="pd b r"></div>
+        <img *ngIf='iconUrl' [src]="iconUrl">
+      </div>
+      <div style="display: none;">
+        <input type="file" accept=".png,.gif,.jpg,.jpeg,.bmp" #fileInputCt (change)="_onFileChange($event)">
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="btn" (click)='onSelect()'>{{"button.select"|translate}}</p>
+    <p class="btn confirm" (click)='onConfirm()'>{{"button.upload"|translate}}</p>
+  </div>
+</div>

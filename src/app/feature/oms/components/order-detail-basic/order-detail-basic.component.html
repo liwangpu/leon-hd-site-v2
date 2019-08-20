@@ -1,0 +1,24 @@
+<div class="container">
+  <form name="detailForm" [formGroup]="detailForm" class="cus-form">
+    <input type="hidden" formControlName='id' name='id'>
+    <div class="cus-form-item">
+      <mat-form-field>
+        <input matInput name="name" formControlName="name" placeholder='{{"form.name"|translate}}' required />
+        <mat-error *ngIf="f.name.errors?.required">{{'validation.required'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="cus-form-item">
+      <mat-form-field>
+        <input matInput name="description" formControlName="description"
+          placeholder='{{"form.description"|translate}}' />
+      </mat-form-field>
+    </div>
+    <div class="cus-form-bar">
+      <ng-content select='button.form-bar'></ng-content>
+      <button mat-button [disabled]='!(detailForm.valid&&detailForm.dirty)' (click)='onSave()'>
+        <mat-icon>save</mat-icon>
+        <span>{{'button.save'|translate}}</span>
+      </button>
+    </div>
+  </form>
+</div>

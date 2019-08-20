@@ -1,0 +1,15 @@
+<div class="cus-dialog">
+  <div class="header">
+    <p class="title">{{'dialog.advancedSearch'|translate}}</p>
+    <button mat-icon-button (click)='close.next()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+  <div class="footer">
+    <!-- <p class="btn" (click)='undo.next()'>{{"button.undo"|translate}}</p> -->
+    <p class="btn confirm" (click)='search.next()'>{{"button.search"|translate}}</p>
+  </div>
+</div>

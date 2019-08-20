@@ -1,0 +1,5 @@
+<div class="container">
+  <shared-simple-toggle-table *ngIf='allAccessPoints' [selected]='selectedAccessPointIds' [datas]='allAccessPoints' [columnDefs]='accessPointDefs'
+    (selectItemChange)='onAccessPointChange($event)'>
+  </shared-simple-toggle-table>
+</div>

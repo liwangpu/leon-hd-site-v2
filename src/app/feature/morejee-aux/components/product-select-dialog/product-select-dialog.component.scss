@@ -1,0 +1,14 @@
+div.container {
+    div.header {
+      position: relative;
+      border-bottom: none;
+      div.search-bar {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 0;
+        height: 35px;
+      }
+    }
+  }

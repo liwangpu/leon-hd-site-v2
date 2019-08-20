@@ -1,0 +1,10 @@
+<shared-list-viewer-filter (close)='dialogRef.close()' (search)='onSearch()' (undo)='onClearSearch()'>
+    <form [formGroup]="searchForm">
+        <mat-form-field>
+            <input matInput name="mail" formControlName="mail" placeholder='{{"form.mail"|translate}}' />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="phone" formControlName="phone" placeholder='{{"form.phone"|translate}}' />
+        </mat-form-field>
+    </form>
+</shared-list-viewer-filter>
