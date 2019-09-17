@@ -21,7 +21,8 @@ export class AccountDetailBasicComponent implements OnInit {
   constructor(protected formBuilder: FormBuilder, protected accountSrv: AccountService, protected msgSrv: MessageCenterService) {
     this.detailForm = this.formBuilder.group({
       id: ['', []]
-      , name: ['', [Validators.required]]
+      , lastName: ['', [Validators.required]]
+      , firstName: ['', [Validators.required]]
       , mail: ['', [Validators.email]]
       , phone: ['', [Validators.required]]
       , description: ['', []]

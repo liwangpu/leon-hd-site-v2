@@ -3,8 +3,14 @@
     <input type="hidden" formControlName='id' name='id'>
     <div class="cus-form-item">
       <mat-form-field>
-        <input matInput name="name" formControlName="name" placeholder='{{"form.name"|translate}}' required />
-        <mat-error *ngIf="f.name.errors?.required">{{'validation.required'|translate}}</mat-error>
+        <input matInput name="lastName" formControlName="lastName" placeholder='{{"form.lastName"|translate}}' required />
+        <mat-error *ngIf="f.lastName.errors?.required">{{'validation.required'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="cus-form-item">
+      <mat-form-field>
+        <input matInput name="firstName" formControlName="firstName" placeholder='{{"form.firstName"|translate}}' required />
+        <mat-error *ngIf="f.firstName.errors?.required">{{'validation.required'|translate}}</mat-error>
       </mat-form-field>
     </div>
     <div class="cus-form-item">
