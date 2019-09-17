@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+
+  hd-site:
+    container_name: hd-site-c
+    image: hd-site:latest
+    build: ./
+    ports:
+      - "9521:4000"
+
