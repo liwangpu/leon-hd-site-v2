@@ -8,4 +8,4 @@ services:
     build: ./
     ports:
       - "9521:4000"
-
+    restart: always
