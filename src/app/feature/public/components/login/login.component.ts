@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         data.password = '';
 
       this.cacheSrv.lastLoginAccount = JSON.stringify(data);
-      this.router.navigateByUrl(this.returnUrl);
+      this.router.navigateByUrl(this.returnUrl ? this.returnUrl : '/app');
     });
   }//login
 
