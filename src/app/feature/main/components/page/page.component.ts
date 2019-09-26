@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppCacheService } from '@app/core';
 
 @Component({
@@ -9,11 +9,16 @@ import { AppCacheService } from '@app/core';
 })
 export class PageComponent implements OnInit {
 
-  constructor(protected acr: ActivatedRoute, protected cacheSrv: AppCacheService) {
-    // this.account = this.acr.snapshot.data['entity'] ? this.acr.snapshot.data['entity'] : new Account();
+  constructor(protected acr: ActivatedRoute, protected cacheSrv: AppCacheService, protected router: Router) {
     let profile = this.acr.snapshot.data['profile'];
+
+    if (profile.error) {
+      this.cacheSrv.clearToken();
+      this.router.navigateByUrl('/public/login');
+      return;
+    }
+
     this.cacheSrv.accountId = profile.id;
-    console.log('profile', profile);
   }//constructor
 
   ngOnInit() {

@@ -1,19 +1,21 @@
 <div class="viewer-container">
     <shared-list-viewer-toolbar [title]='title'></shared-list-viewer-toolbar>
     <div class="content">
-        <mat-drawer-container class="list-viewer-drawer" autosize>
-            <mat-drawer #drawerCt class="list-viewer-sidenav" [mode]="_drawerMode">
-                <div #leftPartCt class="list-left-part-wrapper">
-                    <ng-content select="div.list-left-part"></ng-content>
-                </div>
-            </mat-drawer>
+        <div class="relocation">
+            <mat-drawer-container class="list-viewer-drawer" autosize>
+                <mat-drawer #drawerCt class="list-viewer-sidenav" [mode]="_drawerMode">
+                    <div #leftPartCt class="list-left-part-wrapper">
+                        <ng-content select="div.list-left-part"></ng-content>
+                    </div>
+                </mat-drawer>
 
-            <div class="list-viewer-sidenav-content">
-                <div class="list">
-                    <shared-list-viewer-table></shared-list-viewer-table>
+                <div class="list-viewer-sidenav-content">
+                    <div class="list">
+                        <shared-list-viewer-table></shared-list-viewer-table>
+                    </div>
+                    <shared-list-viewer-paginator></shared-list-viewer-paginator>
                 </div>
-                <shared-list-viewer-paginator></shared-list-viewer-paginator>
-            </div>
-        </mat-drawer-container>
+            </mat-drawer-container>
+        </div>
     </div>
 </div>

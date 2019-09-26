@@ -69,4 +69,8 @@ export class AppCacheService {
 
   }//constructor
 
+  clearToken() {
+    this.token = '';
+  }
+
 }
