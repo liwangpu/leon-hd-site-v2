@@ -5,6 +5,7 @@ div.detail-viewer {
   flex-flow: column;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   div.header {
     display: flex;
     flex-flow: row;
@@ -40,7 +41,7 @@ div.detail-viewer {
     border-bottom-right-radius: $GLCommonCardRadius;
   }
   div.gap {
-    height: .7rem;
+    height: 0.7rem;
   }
   div.detail-info {
     flex: 1 1 0;
@@ -63,5 +64,10 @@ div.detail-viewer {
     div.gap {
       height: 0.3rem;
     }
+    // div.detail-info {
+    //   div.mend {
+    //     height: auto;
+    //   }
+    // }
   }
 }
