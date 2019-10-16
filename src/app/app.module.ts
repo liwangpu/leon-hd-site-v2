@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule, AuthInterceptorService, ErrorInterceptorService, LocalizationInterceptorService, AppConfigService } from '@app/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BasicMsModule } from '@app/feature/basic-ms';
-import { MorejeeMsModule } from '@app/feature/morejee-ms';
-import { OssMsModule } from '@app/feature/oss-ms';
-import { OmsMsModule } from '@app/feature/oms-ms';
+// import { BasicMsModule } from '@app/feature/basic-ms';
+// import { MorejeeMsModule } from '@app/feature/morejee-ms';
+// import { OssMsModule } from '@app/feature/oss-ms';
+// import { OmsMsModule } from '@app/feature/oms-ms';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
@@ -59,11 +59,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule.forRoot(),
-    BasicMsModule.forRoot(),
-    MorejeeMsModule.forRoot(),
-    OssMsModule.forRoot(),
-    OmsMsModule.forRoot()
+    CoreModule.forRoot()
   ],
   providers: [
     httpInterceptorProviders,

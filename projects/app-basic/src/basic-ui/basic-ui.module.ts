@@ -1,0 +1,15 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { BasicUiRoutingModule } from './basic-ui-routing.module';
+import { LoginComponent } from './components/login/login.component';
+
+
+@NgModule({
+  declarations: [LoginComponent],
+  imports: [
+    CommonModule,
+    BasicUiRoutingModule
+  ]
+})
+export class BasicUiModule { }

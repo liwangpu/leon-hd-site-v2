@@ -56,7 +56,10 @@
         "src/app/feature/oms-aux/public_api"
       ],
       "app-basic": [
-        "projects/app-basic/src/public-api.ts"
+        "dist/app-basic"
+      ],
+      "app-basic/*": [
+        "dist/app-basic/*"
       ],
       "app-oms": [
         "dist/app-oms"
