@@ -54,6 +54,30 @@
       ],
       "@app/feature/oms-aux": [
         "src/app/feature/oms-aux/public_api"
+      ],
+      "app-basic": [
+        "dist/app-basic"
+      ],
+      "app-basic/*": [
+        "dist/app-basic/*"
+      ],
+      "app-oms": [
+        "dist/app-oms"
+      ],
+      "app-oms/*": [
+        "dist/app-oms/*"
+      ],
+      "app-morejee": [
+        "dist/app-morejee"
+      ],
+      "app-morejee/*": [
+        "dist/app-morejee/*"
+      ],
+      "app-oss": [
+        "dist/app-oss"
+      ],
+      "app-oss/*": [
+        "dist/app-oss/*"
       ]
     }
   }
