@@ -36,7 +36,7 @@ const routes: Routes = [
     path: 'oss',
     loadChildren: () => import("./wrappers/app-oss-wrapper.module").then(m => m.AppOssWrapperModule)
   }
-  , { path: '**', redirectTo: 'app' }
+  , { path: '**', redirectTo: 'basic' }
 ];
 
 @NgModule({

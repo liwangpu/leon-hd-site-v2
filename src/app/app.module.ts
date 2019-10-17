@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { CoreModule, AuthInterceptorService, ErrorInterceptorService, LocalizationInterceptorService, AppConfigService } from '@app/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APISERVER } from 'app-common';
+import { CoreModule, AppConfigService } from '@app/core';
 
 /** Http interceptor providers in outside-in order */
 // export const httpInterceptorProviders = [
@@ -29,9 +30,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 //   }
 // };
 
-const appAPIServerFn = () => {
-  return "this is api url";
-}
+const appAPIServerTokenFn = (appConfig: AppConfigService) => {
+  console.log(23);
+  return () => appConfig.loadAppConfig();
+
+
+  // return "12312321";
+  // appConfig.loadAppConfig().then()
+}//appAPIServerTokenFn
 
 @NgModule({
   declarations: [
@@ -49,14 +55,14 @@ const appAPIServerFn = () => {
       }
     }),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule
   ],
   providers: [
     {
       provide: APISERVER,
-      useFactory: appAPIServerFn,
-      multi: true,
-      deps: []
+      useFactory: appAPIServerTokenFn,
+      deps: [AppConfigService]
     }
   ],
   bootstrap: [AppComponent]
