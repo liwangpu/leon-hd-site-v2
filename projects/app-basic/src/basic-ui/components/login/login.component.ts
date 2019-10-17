@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TokenService } from "../../../basic-ms/services/token.service";
 @Component({
   selector: 'basic-login',
   templateUrl: './login.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tokenSrv: TokenService
+  ) {
+
+  }//constructor
 
   ngOnInit() {
-  }
+    
+  }//ngOnInit
 
 }

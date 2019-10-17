@@ -1,0 +1,21 @@
+{
+  "name": "app-common",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0"
+  },
+  "main": "bundles/app-common.umd.js",
+  "module": "fesm5/app-common.js",
+  "es2015": "fesm2015/app-common.js",
+  "esm5": "esm5/app-common.js",
+  "esm2015": "esm2015/app-common.js",
+  "fesm5": "fesm5/app-common.js",
+  "fesm2015": "fesm2015/app-common.js",
+  "typings": "app-common.d.ts",
+  "metadata": "app-common.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

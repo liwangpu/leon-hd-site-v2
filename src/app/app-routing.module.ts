@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@app/core';
+// import { AuthGuardService } from '@app/core';
 
 // const routes: Routes = [
 //   {
@@ -22,19 +22,19 @@ import { AuthGuardService } from '@app/core';
 const routes: Routes = [
   {
     path: 'basic',
-    loadChildren: () => import("./app-basic-wrapper.module").then(m => m.AppBasicWrapperModule)
+    loadChildren: () => import("./wrappers/app-basic-wrapper.module").then(m => m.AppBasicWrapperModule)
   }
   , {
     path: 'morejee',
-    loadChildren: () => import("./app-morejee-wrapper.module").then(m => m.AppMorejeeWrapperModule)
+    loadChildren: () => import("./wrappers/app-morejee-wrapper.module").then(m => m.AppMorejeeWrapperModule)
   }
   , {
     path: 'oms',
-    loadChildren: () => import("./app-oms-wrapper.module").then(m => m.AppOmsWrapperModule)
+    loadChildren: () => import("./wrappers/app-oms-wrapper.module").then(m => m.AppOmsWrapperModule)
   }
   , {
     path: 'oss',
-    loadChildren: () => import("./app-oss-wrapper.module").then(m => m.AppOssWrapperModule)
+    loadChildren: () => import("./wrappers/app-oss-wrapper.module").then(m => m.AppOssWrapperModule)
   }
   , { path: '**', redirectTo: 'app' }
 ];
