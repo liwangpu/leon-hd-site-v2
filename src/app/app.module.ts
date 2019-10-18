@@ -19,52 +19,53 @@ import { CoreModule, AppConfigService } from '@app/core';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new MultiTranslateHttpLoader(http, [
-    { prefix: "./assets/i18n/", suffix: ".json" }
-  ]);
+    return new MultiTranslateHttpLoader(http, [
+        { prefix: "./assets/i18n/", suffix: ".json" }
+    ]);
 }
 
-// const appInitializerFn = (appConfig: AppConfigService) => {
-//   return () => {
-//     return appConfig.loadAppConfig();
-//   }
-// };
+const appInitializerFn = (service: AppConfigService) => {
+    return () => service.loadAppConfig();
+};
 
-const appAPIServerTokenFn = (appConfig: AppConfigService) => {
-  console.log(23);
-  return () => appConfig.loadAppConfig();
-
-
-  // return "12312321";
-  // appConfig.loadAppConfig().then()
+const appAPIServerTokenFn = (service: AppConfigService) => {
+    if (service.config) return service.config.APIServer;
+    return '';
 }//appAPIServerTokenFn
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'my-angular-app' }),
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule
-  ],
-  providers: [
-    {
-      provide: APISERVER,
-      useFactory: appAPIServerTokenFn,
-      deps: [AppConfigService]
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'my-angular-app' }),
+        BrowserModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule
+    ],
+    providers: [
+        {
+            provide: APP_INITIALIZER,
+            useFactory: appInitializerFn,
+            multi: true,
+            deps: [AppConfigService, HttpClient]
+        },
+        {
+            provide: APISERVER,
+            useFactory: appAPIServerTokenFn,
+            multi: true,
+            deps: [AppConfigService]
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

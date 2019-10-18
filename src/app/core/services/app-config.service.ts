@@ -1,27 +1,23 @@
-import { Injectable, Inject, PLATFORM_ID, Injector } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID, APP_INITIALIZER } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { AppConfig } from '../models/app-config';
 
 @Injectable()
 export class AppConfigService {
 
-  APIServer: string;
+    config: AppConfig;
+    constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient) { }
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private injector: Injector) { }
+    loadAppConfig() {
+        let browserMode = isPlatformBrowser(this.platformId);
+        if (browserMode) {
+            return this.http.get('/assets/app-config.json').pipe(tap((data: any) => {
+                this.config = data;
+            })).toPromise();
+        }
 
-  loadAppConfig() {
-
-    let browserMode = isPlatformBrowser(this.platformId);
-    console.log(1, browserMode);
-    if (browserMode) {
-      let http = this.injector.get(HttpClient);
-      return http.get('/assets/app-config.json').pipe(tap((data: any) => {
-        this.APIServer = data["APIServer"];
-        console.log('APIServer', this.APIServer);
-      })).toPromise();
-    }
-
-    return Promise.resolve();
-  }//loadAppConfig
+        return Promise.resolve();
+    }//loadAppConfig
 }
