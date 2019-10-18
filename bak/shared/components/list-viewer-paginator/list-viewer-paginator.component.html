@@ -1,9 +1,0 @@
-<div class="list-viewer-paginator">
-    <span *ngIf='selectedItemCount==1' [translate]='"message.itemSelectd"' [translateParams]='{value:selectedItemCount}'
-        class="msg"></span>
-    <span *ngIf='selectedItemCount>1' [translate]='"message.itemsSelectd"' [translateParams]='{value:selectedItemCount}'
-        class="msg"></span>
-    <mat-paginator  showFirstLastButtons='true' [pageIndex]='pageIndex' [pageSize]="pageSize" [length]="totalData"
-        [pageSizeOptions]="opsatSrv.paginatorOptions" (page)="onPageChange($event)">
-    </mat-paginator>
-</div>

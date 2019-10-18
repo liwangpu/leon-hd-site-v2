@@ -41,4 +41,8 @@ export class LoginComponent implements OnInit {
         //     this.loginForm.patchValue(JSON.parse(lastLoginStr));
     }//ngOnInit
 
+    login(){
+
+    }//login
+
 }
