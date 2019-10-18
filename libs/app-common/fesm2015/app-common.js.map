@@ -1,1 +1,0 @@
-{"version":3,"file":"app-common.js","sources":["ng://app-common/app-tokens.ts"],"sourcesContent":["import { InjectionToken } from '@angular/core';\r\n\r\nexport const APISERVER = new InjectionToken<string>(\"default\");"],"names":[],"mappings":";;;;;;AAAA;AAEA,MAAa,SAAS,GAAG,IAAI,cAAc,CAAS,SAAS,CAAC;;;;;;;;;;;;;;"}

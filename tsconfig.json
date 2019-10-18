@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -25,37 +25,7 @@
       "@app/core": [
         "src/app/core/public_api"
       ],
-      "@app/shared": [
-        "src/app/shared/public_api"
-      ],
-      "@app/feature/base-ms": [
-        "src/app/feature/base-ms/public_api"
-      ],
-      "@app/feature/basic-ms": [
-        "src/app/feature/basic-ms/public_api"
-      ],
-      "@app/feature/basic-aux": [
-        "src/app/feature/basic-aux/public_api"
-      ],
-      "@app/feature/designer-ms": [
-        "src/app/feature/designer-ms/public_api"
-      ],
-      "@app/feature/morejee-ms": [
-        "src/app/feature/morejee-ms/public_api"
-      ],
-      "@app/feature/morejee-aux": [
-        "src/app/feature/morejee-aux/public_api"
-      ],
-      "@app/feature/oss-ms": [
-        "src/app/feature/oss-ms/public_api"
-      ],
-      "@app/feature/oms-ms": [
-        "src/app/feature/oms-ms/public_api"
-      ],
-      "@app/feature/oms-aux": [
-        "src/app/feature/oms-aux/public_api"
-      ],
-      "app-basic": [
+      "app-basic1": [
         "projects/app-basic/src/public-api.ts"
       ],
       "app-oms": [
@@ -73,7 +43,7 @@
       "app-oss/*": [
         "dist/app-oss/*"
       ],
-      "app-common": [
+      "app-common1": [
         "projects/app-common/src/public-api.ts"
       ]
     }
