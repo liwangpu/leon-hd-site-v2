@@ -59,10 +59,7 @@
         "projects/app-basic/src/public-api.ts"
       ],
       "app-oms": [
-        "dist/app-oms"
-      ],
-      "app-oms/*": [
-        "dist/app-oms/*"
+        "projects/app-oms/src/public-api.ts"
       ],
       "app-morejee": [
         "dist/app-morejee"
