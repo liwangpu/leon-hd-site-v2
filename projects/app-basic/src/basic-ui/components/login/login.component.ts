@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from "../../../basic-ms/services/token.service";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { LocalStorageService, LocalStorageKeyEnum } from "app-common";
 @Component({
     selector: 'basic-login',
     templateUrl: './login.component.html',
@@ -13,16 +15,18 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     loginForm: FormGroup;
     constructor(
-        protected acr: ActivatedRoute,
-        protected router: Router,
-        protected formBuilder: FormBuilder,
-        protected tokenSrv: TokenService
+        private acr: ActivatedRoute,
+        private router: Router,
+        private formBuilder: FormBuilder,
+        private tokenSrv: TokenService,
+        private storageSrv: LocalStorageService
     ) {
         this.loginForm = this.formBuilder.group({
             username: ['', [Validators.required]],
             password: ['', [Validators.required]]
         });
         this.acr.queryParams.subscribe(params => this.returnUrl = params['return']);
+        console.log('return url:',this.returnUrl);
     }//constructor
 
     ngOnInit() {
@@ -41,8 +45,15 @@ export class LoginComponent implements OnInit {
         //     this.loginForm.patchValue(JSON.parse(lastLoginStr));
     }//ngOnInit
 
-    login(){
-
+    login() {
+        let data = this.loginForm.value;
+        this.tokenSrv.login(data.username, data.password)
+            .pipe(tap(res => {
+                this.storageSrv.setItem(LocalStorageKeyEnum.token, res.token);
+            })).subscribe(res => {
+                console.log('res', res);
+                this.router.navigateByUrl(this.returnUrl ? this.returnUrl : '/');
+            });
     }//login
 
 }

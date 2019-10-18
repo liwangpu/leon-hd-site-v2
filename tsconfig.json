@@ -77,10 +77,7 @@
         "dist/app-oss/*"
       ],
       "app-common": [
-        "libs/app-common"
-      ],
-      "app-common/*": [
-        "libs/app-common/*"
+        "projects/app-common/src/public-api.ts"
       ]
     }
   }

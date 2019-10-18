@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { CoreModule, AuthInterceptorService, ErrorInterceptorService, LocalizationInterceptorService, AppConfigService } from '@app/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APISERVER } from 'app-common';
+import { APISERVER,AppCommonModule } from 'app-common';
 import { CoreModule, AppConfigService } from '@app/core';
 
 /** Http interceptor providers in outside-in order */
@@ -49,6 +49,7 @@ const appAPIServerTokenFn = (service: AppConfigService) => {
         }),
         AppRoutingModule,
         BrowserAnimationsModule,
+        AppCommonModule,
         CoreModule
     ],
     providers: [

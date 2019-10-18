@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MainComponent } from './components/main/main.component';
+import { AppCommonModule } from 'app-common';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { MainComponent } from './components/main/main.component';
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
+    AppCommonModule,
     BasicUiRoutingModule,
     BasicMsModule
   ]

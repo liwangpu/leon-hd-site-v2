@@ -20,27 +20,28 @@ import { Routes, RouterModule } from '@angular/router';
 // ];
 
 const routes: Routes = [
-  {
-    path: 'basic',
-    loadChildren: () => import("./wrappers/app-basic-wrapper.module").then(m => m.AppBasicWrapperModule)
-  }
-  , {
-    path: 'morejee',
-    loadChildren: () => import("./wrappers/app-morejee-wrapper.module").then(m => m.AppMorejeeWrapperModule)
-  }
-  , {
-    path: 'oms',
-    loadChildren: () => import("./wrappers/app-oms-wrapper.module").then(m => m.AppOmsWrapperModule)
-  }
-  , {
-    path: 'oss',
-    loadChildren: () => import("./wrappers/app-oss-wrapper.module").then(m => m.AppOssWrapperModule)
-  }
-  , { path: '**', redirectTo: 'basic' }
+    {
+        path: 'basic',
+        loadChildren: () => import("./wrappers/app-basic-wrapper.module").then(m => m.AppBasicWrapperModule)
+    }
+    , {
+        path: 'morejee',
+        loadChildren: () => import("./wrappers/app-morejee-wrapper.module").then(m => m.AppMorejeeWrapperModule)
+    }
+    , {
+        path: 'oms',
+        loadChildren: () => import("./wrappers/app-oms-wrapper.module").then(m => m.AppOmsWrapperModule)
+    }
+    , {
+        path: 'oss',
+        loadChildren: () => import("./wrappers/app-oss-wrapper.module").then(m => m.AppOssWrapperModule)
+    }
+    , { path: '', redirectTo: "basic", pathMatch: 'full' }
+    , { path: '**', redirectTo: 'basic' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
