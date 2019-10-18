@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MultiTranslateHttpLoader } from "ngx-translate-multi-http-loader";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,9 +20,7 @@ import { CoreModule, AppConfigService } from '@app/core';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-    return new MultiTranslateHttpLoader(http, [
-        { prefix: "./assets/i18n/", suffix: ".json" }
-    ]);
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 const appInitializerFn = (service: AppConfigService) => {
@@ -44,7 +43,7 @@ const appAPIServerTokenFn = (service: AppConfigService) => {
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
+                useFactory: (HttpLoaderFactory),
                 deps: [HttpClient]
             }
         }),

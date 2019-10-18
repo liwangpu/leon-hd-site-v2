@@ -6,10 +6,12 @@ import { LoginComponent } from './components/login/login.component';
 import { BasicMsModule } from '../basic-ms/basic-ms.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MainComponent } from './components/main/main.component';
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, DashboardComponent, MainComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
